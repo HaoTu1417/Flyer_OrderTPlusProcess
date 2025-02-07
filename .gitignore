@@ -64,7 +64,6 @@ rider.project.*
 # .NET generated files
 *.dbmdl
 *.pdb
-*.dll
 *.exe
 *.deps.json
 *.runtimeconfig.json
