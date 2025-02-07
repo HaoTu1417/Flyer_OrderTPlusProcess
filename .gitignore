@@ -1,0 +1,74 @@
+# Build directories
+**/bin/
+**/obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# IDE folders and settings
+.vscode/
+.idea/
+*.DotSettings.user
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+**/logs/
+*.log
+
+# NuGet packages and related files
+*.nupkg
+**/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Rider and JetBrains files
+.idea/
+*.sln.iml
+rider.project.*
+
+# Publish outputs
+**/publish/
+
+# Entity Framework files
+*.efml
+
+# Temporary files
+*.tmp
+*.cache
+*.bak
+
+# Backup files
+*.mdf
+*.ldf
+*.ndf
+*.backup
+*.sql
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# .NET generated files
+*.dbmdl
+*.pdb
+*.dll
+*.exe
+*.deps.json
+*.runtimeconfig.json
+
+# Ignore global.json if not needed
+global.json
+

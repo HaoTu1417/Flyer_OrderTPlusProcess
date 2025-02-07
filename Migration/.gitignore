@@ -1,0 +1,105 @@
+# Build results
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code settings
+.vscode/
+
+# Rider settings
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of PackageReference
+**/packages/*
+# Except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary for NuGet restore
+#!**/packages/repositories.config
+
+# DotCover is a JetBrains code coverage tool
+*.dotCover
+
+# Logs
+*.log
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Coverage results
+TestResults/
+*.coverage
+*.coveragexml
+*.codecov
+
+# NCrunch
+*.ncrunch*
+_NCrunch_*
+.*crunch*.local.xml
+
+# MSTest test results
+*.testresults
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# StyleCop
+StyleCopReport.xml
+
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.ipch
+*.aps
+*.ncb
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.log
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# .NET Core specific
+*.dbmdl
+*.jfm
+
+# Entity Framework
+*.ide
+
+# Backup & Report Files
+*.bak
+*.sql
+*.db
+
+# Publish directory
+publish/
+
