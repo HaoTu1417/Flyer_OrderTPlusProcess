@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderTProcess", "OrderTProc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Migration", "Migration\Migration.csproj", "{6DBDCBED-662A-4A55-86B6-1617F2662869}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vn_matchstock", "vn_matchstock\vn_matchstock.csproj", "{E7CDB39D-76CB-4FC4-9500-EE0D01A7C22D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{6DBDCBED-662A-4A55-86B6-1617F2662869}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DBDCBED-662A-4A55-86B6-1617F2662869}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DBDCBED-662A-4A55-86B6-1617F2662869}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7CDB39D-76CB-4FC4-9500-EE0D01A7C22D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7CDB39D-76CB-4FC4-9500-EE0D01A7C22D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7CDB39D-76CB-4FC4-9500-EE0D01A7C22D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7CDB39D-76CB-4FC4-9500-EE0D01A7C22D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

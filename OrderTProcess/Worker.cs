@@ -9,19 +9,17 @@ namespace OrderTProcess;
 public class Worker
 {
     // Danh sách các ngày nghỉ lễ (cần cập nhật hàng năm)
-    private static readonly List<DateTime> PublicHolidays = new List<DateTime>
-    {
-        new DateTime(2024, 1, 1), // Tết Dương Lịch
-        new DateTime(2024, 4, 30), // Ngày Giải phóng Miền Nam
-        new DateTime(2024, 5, 1), // Ngày Quốc tế Lao Động
-        new DateTime(2024, 9, 2), // Ngày Quốc khánh
-        // Thêm các ngày lễ khác tùy theo từng năm
-    };
+    private static List<DateTime> PublicHolidays;
 
 
     private readonly string _market;
+    private readonly int _tplusDay;
 
-    public Worker(string market) => this._market = market;
+    public Worker(string market, int tplusDay)
+    {
+        this._market = market;
+        this._tplusDay = tplusDay;
+    } 
 
     public void Run()
     {
@@ -29,6 +27,15 @@ public class Worker
         List<TradePositionDto> newTradePostions =
             TradePositionService.FindByMarket(this._market).Where(order => order.new_pos > 0).ToList();
         Log.Info("Found " + newTradePostions.Count + " unfinished orders");
+        
+       
+        // if there is no newTradePostion no need to query the holidays
+        // because the CalculateTPlusDays never been called.
+        if (newTradePostions.Count > 0)
+        {
+            var holidays =  StockHolidayService.FindHolidays(_market);
+            PublicHolidays = holidays.ToList();
+        }
         foreach (var tradePosition in newTradePostions)
         {
             var tplusOrders =
@@ -43,26 +50,26 @@ public class Worker
                     {
                         // t+ time calculation
                         int tPlusDay = CalculateTPlusDays(tplusOrder.order_time);
-                        Log.Debug($"{tplusOrder.stock_code} tPlusDay {tPlusDay}");
+                        Log.Info($"{tplusOrder.stock_code} sn {tplusOrder.sn} tPlusDay {tPlusDay}");
 
                         tplusOrder.TPlus = tPlusDay;
 
                         
-                        // Update the order
+                        // // Update the order
                         TradeOrderService.Update2(tplusOrder);
-
+                        
                         // if the tplus is >= 3 proccess it.
-                        if (tPlusDay >= 3)
+                        if (tPlusDay >= _tplusDay)
                         {
                             tradePosition.new_pos -= tplusOrder.volume;
-
+                        
                             // Update the trade position
                             TradePositionService.Update(tradePosition);
-
+                        
                             Log.Info(
                                 $"{tplusOrder.stock_code} of {tradePosition.sub_account} is finished, released volume {tplusOrder.volume}");
                         }
-
+                        
                         // Commit the transaction
                         scope.Complete();
                     }

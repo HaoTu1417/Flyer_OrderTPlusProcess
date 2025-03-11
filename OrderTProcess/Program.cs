@@ -8,6 +8,8 @@ using Common.Utility;
 using Microsoft.Extensions.Configuration;
 using NLog;
 using System;
+using System.Data;
+using Dapper;
 
 #nullable enable
 namespace OrderTProcess
@@ -23,6 +25,10 @@ namespace OrderTProcess
            
             try
             {
+                
+              
+                    
+                
                 if (args.Length == 0)
                 {
                     Log.Error("Please specify market name");
@@ -30,8 +36,9 @@ namespace OrderTProcess
                 else
                 {
                     Log.Error("Market name"+args[0]);
-                    var a = new ConfigurationBuilder().SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("appsettings.json").Build();
-                    new Worker(args[0].ToUpper()).Run();
+                    var config = new ConfigurationBuilder().SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("appsettings.json").Build();
+                    int targetTPlusDay =  int.Parse(config["TargetTPlusDay"] ?? "3") ;
+                    new Worker(args[0].ToUpper(),targetTPlusDay).Run();
                     Log.Info("End");
                 }
                
